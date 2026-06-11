@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitPro - Gym Management System</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <i class="fas fa-dumbbell"></i>
+                    <span>FitPro</span>
+                </div>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a class="nav-link active" data-section="dashboard-section">
+                        <i class="fas fa-chart-pie"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-section="members-section">
+                        <i class="fas fa-users"></i>
+                        <span>Members</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-section="plans-section">
+                        <i class="fas fa-id-card"></i>
+                        <span>Membership Plans</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-section="attendance-section">
+                        <i class="fas fa-calendar-check"></i>
+                        <span>Attendance</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-section="payments-section">
+                        <i class="fas fa-credit-card"></i>
+                        <span>Payments</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-section="reports-section">
+                        <i class="fas fa-file-alt"></i>
+                        <span>Reports</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-section="settings-section">
+                        <i class="fas fa-cog"></i>
+                        <span>Settings</span>
+                    </a>
+                </li>
+            </ul>
+            <div class="sidebar-footer">
+                <div class="user-profile">
+                    <img src="https://ui-avatars.com/api/?name=Admin+User&background=8b5cf6&color=fff&size=40" alt="Admin">
+                    <div class="user-info">
+                        <div class="user-name">Admin User</div>
+                        <div class="user-role">Gym Manager</div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Top Navbar -->
+            <nav class="top-navbar">
+                <div class="nav-left">
+                    <button class="mobile-toggle" id="mobile-toggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <div class="logo-mobile">
+                        <i class="fas fa-dumbbell"></i>
+                        <span>FitPro</span>
+                    </div>
+                    <div class="search-bar">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Search members, payments...">
+                    </div>
+                </div>
+                <div class="nav-right">
+                    <div class="notification-wrapper">
+                        <button class="icon-btn" onclick="toggleNotifications()">
+                            <i class="fas fa-bell"></i>
+                            <span class="badge">3</span>
+                        </button>
+                        <div class="notification-dropdown" id="notification-dropdown">
+                            <div class="dropdown-header">
+                                <h4>Notifications</h4>
+                                <span class="badge">3 new</span>
+                            </div>
+                            <div class="dropdown-body">
+                                <div class="notification-item danger">
+                                    <div class="notif-icon"><i class="fas fa-exclamation-circle"></i></div>
+                                    <div class="notif-content">
+                                        <p>Amit Singh membership expires tomorrow</p>
+                                        <span>5 hours ago</span>
+                                    </div>
+                                </div>
+                                <div class="notification-item warning">
+                                    <div class="notif-icon"><i class="fas fa-clock"></i></div>
+                                    <div class="notif-content">
+                                        <p>Rahul Sharma expires in 2 days</p>
+                                        <span>2 hours ago</span>
+                                    </div>
+                                </div>
+                                <div class="notification-item success">
+                                    <div class="notif-icon"><i class="fas fa-check-circle"></i></div>
+                                    <div class="notif-content">
+                                        <p>Payment received from Priya Patel</p>
+                                        <span>1 day ago</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="profile-menu">
+                        <button class="profile-btn">
+                            <img src="https://ui-avatars.com/api/?name=Admin+User&background=8b5cf6&color=fff&size=32" alt="Profile">
+                            <span>Admin</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- Content Area -->
+            <div class="content-area">
+                <!-- Dashboard Section -->
+                <section class="section active" id="dashboard-section">
+                    <div class="page-header">
+                        <h1>Dashboard</h1>
+                        <p>Welcome back! Here is what is happening today.</p>
+                    </div>
+
+                    <!-- Expiry Alerts -->
+                    <div class="alert-card">
+                        <div class="alert-icon"><i class="fas fa-exclamation-triangle"></i></div>
+                        <div class="alert-content">
+                            <h3>Membership Expiry Alerts</h3>
+                            <p><strong>Rahul Sharma</strong> expires in 2 days &bull; <strong>Amit Singh</strong> expires tomorrow</p>
+                        </div>
+                        <button class="btn-outline">View All</button>
+                    </div>
+
+                    <!-- Stats -->
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon purple"><i class="fas fa-users"></i></div>
+                            <div class="stat-value">248</div>
+                            <div class="stat-label">Total Members</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon blue"><i class="fas fa-user-check"></i></div>
+                            <div class="stat-value">186</div>
+                            <div class="stat-label">Active Members</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon orange"><i class="fas fa-clock"></i></div>
+                            <div class="stat-value">12</div>
+                            <div class="stat-label">Expiring Soon</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon green"><i class="fas fa-rupee-sign"></i></div>
+                            <div class="stat-value">87,500</div>
+                            <div class="stat-label">Revenue This Month</div>
+                        </div>
+                    </div>
+
+                    <!-- Charts -->
+                    <div class="charts-grid">
+                        <div class="chart-card">
+                            <div class="chart-header">Monthly Revenue</div>
+                            <div class="chart-wrapper">
+                                <canvas id="revenueChart"></canvas>
+                            </div>
+                        </div>
+                        <div class="chart-card">
+                            <div class="chart-header">Membership Growth</div>
+                            <div class="chart-wrapper">
+                                <canvas id="growthChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Recent Members & Payments -->
+                    <div class="tables-grid">
+                        <div class="table-container">
+                            <div class="table-header">
+                                <h3>Recent Members</h3>
+                                <button class="btn-text">View All</button>
+                            </div>
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Member</th>
+                                        <th>Plan</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="recent-members-body"></tbody>
+                            </table>
+                        </div>
+                        <div class="table-container">
+                            <div class="table-header">
+                                <h3>Recent Payments</h3>
+                                <button class="btn-text">View All</button>
+                            </div>
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Member</th>
+                                        <th>Amount</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="recent-payments-body"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Members Section -->
+                <section class="section" id="members-section">
+                    <div class="page-header">
+                        <h1>Members</h1>
+                        <p>Manage all gym members and their memberships.</p>
+                    </div>
+                    <div class="table-container">
+                        <div class="table-header">
+                            <h3>All Members</h3>
+                            <div class="table-actions">
+                                <div class="search-bar small">
+                                    <i class="fas fa-search"></i>
+                                    <input type="text" placeholder="Search members...">
+                                </div>
+                                <button class="btn-primary"><i class="fas fa-plus"></i> Add Member</button>
+                            </div>
+                        </div>
+                        <div class="table-scroll">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Membership</th>
+                                        <th>Join Date</th>
+                                        <th>Expiry Date</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="members-table-body"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Plans Section -->
+                <section class="section" id="plans-section">
+                    <div class="page-header">
+                        <h1>Membership Plans</h1>
+                        <p>Configure membership tiers and pricing.</p>
+                    </div>
+                    <div class="plans-grid">
+                        <div class="plan-card">
+                            <div class="plan-header">
+                                <h3>Basic</h3>
+                                <div class="plan-price">1,500<span>/month</span></div>
+                            </div>
+                            <ul class="plan-features">
+                                <li><i class="fas fa-check"></i> Gym Access</li>
+                                <li><i class="fas fa-check"></i> Locker Room</li>
+                                <li><i class="fas fa-check"></i> Basic Equipment</li>
+                                <li class="disabled"><i class="fas fa-times"></i> Personal Training</li>
+                                <li class="disabled"><i class="fas fa-times"></i> Group Classes</li>
+                            </ul>
+                            <button class="btn-outline full">Edit Plan</button>
+                        </div>
+                        <div class="plan-card featured">
+                            <div class="plan-badge">Popular</div>
+                            <div class="plan-header">
+                                <h3>Standard</h3>
+                                <div class="plan-price">2,500<span>/month</span></div>
+                            </div>
+                            <ul class="plan-features">
+                                <li><i class="fas fa-check"></i> Gym Access</li>
+                                <li><i class="fas fa-check"></i> Locker Room</li>
+                                <li><i class="fas fa-check"></i> All Equipment</li>
+                                <li><i class="fas fa-check"></i> Group Classes</li>
+                                <li class="disabled"><i class="fas fa-times"></i> Personal Training</li>
+                            </ul>
+                            <button class="btn-primary full">Edit Plan</button>
+                        </div>
+                        <div class="plan-card">
+                            <div class="plan-header">
+                                <h3>Premium</h3>
+                                <div class="plan-price">4,000<span>/month</span></div>
+                            </div>
+                            <ul class="plan-features">
+                                <li><i class="fas fa-check"></i> Gym Access</li>
+                                <li><i class="fas fa-check"></i> Locker Room</li>
+                                <li><i class="fas fa-check"></i> All Equipment</li>
+                                <li><i class="fas fa-check"></i> Group Classes</li>
+                                <li><i class="fas fa-check"></i> Personal Training</li>
+                            </ul>
+                            <button class="btn-outline full">Edit Plan</button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Attendance Section -->
+                <section class="section" id="attendance-section">
+                    <div class="page-header">
+                        <h1>Attendance</h1>
+                        <p>Monthly attendance overview for June 2026.</p>
+                    </div>
+                    <div class="attendance-stats">
+                        <div class="stat-card">
+                            <div class="stat-icon blue"><i class="fas fa-calendar-day"></i></div>
+                            <div class="stat-value">22</div>
+                            <div class="stat-label">Days Attended</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon purple"><i class="fas fa-percentage"></i></div>
+                            <div class="stat-value">73%</div>
+                            <div class="stat-label">Attendance Rate</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon green"><i class="fas fa-fire"></i></div>
+                            <div class="stat-value">8</div>
+                            <div class="stat-label">Current Streak</div>
+                        </div>
+                    </div>
+                    <div class="chart-card">
+                        <div class="chart-header">June 2026 Attendance Calendar</div>
+                        <div class="calendar-wrapper">
+                            <div class="calendar-header">
+                                <div>Sun</div><div>Mon</div><div>Tue</div><div>Wed</div><div>Thu</div><div>Fri</div><div>Sat</div>
+                            </div>
+                            <div class="calendar-grid" id="attendance-calendar"></div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Payments Section -->
+                <section class="section" id="payments-section">
+                    <div class="page-header">
+                        <h1>Payments</h1>
+                        <p>Track all transactions and payment history.</p>
+                    </div>
+                    <div class="table-container">
+                        <div class="table-header">
+                            <h3>Recent Payments</h3>
+                            <button class="btn-primary"><i class="fas fa-download"></i> Export</button>
+                        </div>
+                        <div class="table-scroll">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Member</th>
+                                        <th>Amount</th>
+                                        <th>Date</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="payments-table-body"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Reports Section -->
+                <section class="section" id="reports-section">
+                    <div class="page-header">
+                        <h1>Reports</h1>
+                        <p>Analytics and performance insights.</p>
+                    </div>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon green"><i class="fas fa-chart-line"></i></div>
+                            <div class="stat-value">5,25,000</div>
+                            <div class="stat-label">Total Revenue (YTD)</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon blue"><i class="fas fa-user-plus"></i></div>
+                            <div class="stat-value">128</div>
+                            <div class="stat-label">New Members (YTD)</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon purple"><i class="fas fa-redo"></i></div>
+                            <div class="stat-value">82%</div>
+                            <div class="stat-label">Renewal Rate</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon orange"><i class="fas fa-door-open"></i></div>
+                            <div class="stat-value">34</div>
+                            <div class="stat-label">Avg Daily Visits</div>
+                        </div>
+                    </div>
+                    <div class="charts-grid">
+                        <div class="chart-card">
+                            <div class="chart-header">Revenue Summary</div>
+                            <div class="chart-wrapper">
+                                <canvas id="reportRevenueChart"></canvas>
+                            </div>
+                        </div>
+                        <div class="chart-card">
+                            <div class="chart-header">Active Members Trend</div>
+                            <div class="chart-wrapper">
+                                <canvas id="reportMembersChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Settings Section -->
+                <section class="section" id="settings-section">
+                    <div class="page-header">
+                        <h1>Settings</h1>
+                        <p>Manage your gym preferences and configurations.</p>
+                    </div>
+                    <div class="settings-grid">
+                        <div class="settings-card">
+                            <h3><i class="fas fa-building"></i> Gym Profile</h3>
+                            <div class="form-group">
+                                <label>Gym Name</label>
+                                <input type="text" value="FitPro Gym">
+                            </div>
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="email" value="admin@fitpro.com">
+                            </div>
+                            <div class="form-group">
+                                <label>Phone</label>
+                                <input type="text" value="+91 98765 43210">
+                            </div>
+                            <button class="btn-primary">Save Changes</button>
+                        </div>
+                        <div class="settings-card">
+                            <h3><i class="fas fa-bell"></i> Notifications</h3>
+                            <div class="toggle-group">
+                                <div class="toggle-item">
+                                    <span>Email Alerts</span>
+                                    <label class="toggle">
+                                        <input type="checkbox" checked>
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                </div>
+                                <div class="toggle-item">
+                                    <span>SMS Alerts</span>
+                                    <label class="toggle">
+                                        <input type="checkbox">
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                </div>
+                                <div class="toggle-item">
+                                    <span>Expiry Reminders</span>
+                                    <label class="toggle">
+                                        <input type="checkbox" checked>
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="settings-card">
+                            <h3><i class="fas fa-palette"></i> Appearance</h3>
+                            <div class="form-group">
+                                <label>Theme</label>
+                                <select>
+                                    <option>Dark (Default)</option>
+                                    <option>Light</option>
+                                    <option>Auto</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Language</label>
+                                <select>
+                                    <option>English</option>
+                                    <option>Hindi</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
