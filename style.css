@@ -1,3 +1,8 @@
+/* ============================================
+   FITPRO GYM MANAGEMENT SYSTEM - STYLES
+   Fully Responsive & Mobile-First
+   ============================================ */
+
 :root {
   --primary-bg: #0b0f19;
   --secondary-bg: #151b2b;
@@ -18,11 +23,15 @@
   box-sizing: border-box;
 }
 
-body {
+html, body {
   font-family: 'Inter', sans-serif;
   background: var(--primary-bg);
   color: var(--text-primary);
   overflow-x: hidden;
+  width: 100%;
+  max-width: 100vw;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body::before {
@@ -56,9 +65,14 @@ body::before {
 .app-container {
   display: flex;
   min-height: 100vh;
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
 }
 
-/* Sidebar */
+/* ============================================
+   SIDEBAR
+   ============================================ */
 .sidebar {
   width: 260px;
   background: rgba(11, 15, 25, 0.95);
@@ -70,6 +84,7 @@ body::before {
   height: 100vh;
   z-index: 100;
   transition: transform 0.3s ease;
+  flex-shrink: 0;
 }
 
 .sidebar-header {
@@ -97,6 +112,7 @@ body::before {
   list-style: none;
   padding: 16px 12px;
   flex: 1;
+  overflow-y: auto;
 }
 
 .nav-item {
@@ -114,6 +130,7 @@ body::before {
   font-weight: 500;
   transition: all 0.3s ease;
   cursor: pointer;
+  white-space: nowrap;
 }
 
 .nav-link:hover, .nav-link.active {
@@ -127,15 +144,51 @@ body::before {
   border: 1px solid rgba(139, 92, 246, 0.3);
 }
 
-/* Main Content */
+.sidebar-footer {
+  padding: 20px;
+  border-top: 1px solid var(--glass-border);
+}
+
+.user-profile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.user-profile img {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  flex-shrink: 0;
+}
+
+.user-name {
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+.user-role {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+/* ============================================
+   MAIN CONTENT
+   ============================================ */
 .main-content {
   flex: 1;
   margin-left: 260px;
   display: flex;
   flex-direction: column;
+  width: calc(100% - 260px);
+  max-width: calc(100vw - 260px);
+  min-width: 0;
+  overflow-x: hidden;
 }
 
-/* Top Navbar */
+/* ============================================
+   TOP NAVBAR
+   ============================================ */
 .top-navbar {
   height: 70px;
   background: rgba(21, 27, 43, 0.8);
@@ -148,12 +201,17 @@ body::before {
   position: sticky;
   top: 0;
   z-index: 50;
+  width: 100%;
+  min-width: 0;
 }
 
 .nav-left {
   display: flex;
   align-items: center;
   gap: 16px;
+  min-width: 0;
+  flex: 1;
+  overflow: hidden;
 }
 
 .logo-mobile {
@@ -165,11 +223,14 @@ body::before {
   background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  flex-shrink: 0;
 }
 
 .search-bar {
   position: relative;
   width: 320px;
+  max-width: 100%;
+  flex-shrink: 1;
 }
 
 .search-bar i {
@@ -207,17 +268,26 @@ body::before {
   display: flex;
   align-items: center;
   gap: 16px;
+  flex-shrink: 0;
+  min-width: 0;
 }
 
-/* Content Area */
+/* ============================================
+   CONTENT AREA
+   ============================================ */
 .content-area {
   padding: 32px;
   flex: 1;
   overflow-y: auto;
+  overflow-x: hidden;
+  width: 100%;
+  min-width: 0;
 }
 
 .section {
   display: none;
+  width: 100%;
+  max-width: 100%;
 }
 
 .section.active {
@@ -227,6 +297,10 @@ body::before {
 
 .page-header {
   margin-bottom: 32px;
+  width: 100%;
+  max-width: 100%;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .page-header h1 {
@@ -236,13 +310,21 @@ body::before {
   background: linear-gradient(135deg, #f1f5f9, #94a3b8);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  line-height: 1.2;
 }
 
 .page-header p {
   color: var(--text-secondary);
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  line-height: 1.5;
 }
 
-/* Alert Card */
+/* ============================================
+   ALERT CARD
+   ============================================ */
 .alert-card {
   background: rgba(245, 158, 11, 0.1);
   border: 1px solid rgba(245, 158, 11, 0.2);
@@ -253,6 +335,8 @@ body::before {
   align-items: center;
   gap: 16px;
   animation: slideIn 0.6s ease;
+  width: 100%;
+  max-width: 100%;
 }
 
 .alert-icon {
@@ -270,24 +354,34 @@ body::before {
 
 .alert-content {
   flex: 1;
+  min-width: 0;
+  overflow: hidden;
 }
 
 .alert-content h3 {
   font-size: 1rem;
   margin-bottom: 4px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .alert-content p {
   color: var(--text-secondary);
   font-size: 0.875rem;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  line-height: 1.5;
 }
 
-/* Stats Cards */
+/* ============================================
+   STATS CARDS
+   ============================================ */
 .stats-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   gap: 24px;
   margin-bottom: 32px;
+  width: 100%;
 }
 
 .stat-card {
@@ -300,6 +394,8 @@ body::before {
   position: relative;
   overflow: hidden;
   animation: fadeIn 0.6s ease backwards;
+  width: 100%;
+  min-width: 0;
 }
 
 .stat-card:nth-child(1) { animation-delay: 0.1s; }
@@ -338,6 +434,7 @@ body::before {
   justify-content: center;
   font-size: 1.25rem;
   margin-bottom: 16px;
+  flex-shrink: 0;
 }
 
 .stat-icon.purple { background: rgba(139, 92, 246, 0.2); color: var(--accent-purple); }
@@ -349,19 +446,26 @@ body::before {
   font-size: 2rem;
   font-weight: 700;
   margin-bottom: 4px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .stat-label {
   color: var(--text-secondary);
   font-size: 0.875rem;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
-/* Charts */
+/* ============================================
+   CHARTS
+   ============================================ */
 .charts-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: 24px;
   margin-bottom: 32px;
+  width: 100%;
 }
 
 .chart-card {
@@ -372,24 +476,34 @@ body::before {
   padding: 24px;
   animation: fadeIn 0.6s ease backwards;
   animation-delay: 0.2s;
+  width: 100%;
+  min-width: 0;
+  overflow: hidden;
 }
 
 .chart-header {
   margin-bottom: 20px;
   font-weight: 600;
   font-size: 1.1rem;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .chart-wrapper {
   height: 300px;
   position: relative;
+  width: 100%;
+  min-width: 0;
 }
 
-/* Tables */
+/* ============================================
+   TABLES
+   ============================================ */
 .tables-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: 24px;
+  width: 100%;
 }
 
 .table-container {
@@ -400,6 +514,8 @@ body::before {
   overflow: hidden;
   animation: fadeIn 0.6s ease backwards;
   animation-delay: 0.3s;
+  width: 100%;
+  min-width: 0;
 }
 
 .table-header {
@@ -408,20 +524,28 @@ body::before {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
 }
 
 .table-header h3 {
   font-size: 1rem;
   font-weight: 600;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  min-width: 0;
 }
 
 .table-scroll {
   overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  width: 100%;
 }
 
 .data-table {
   width: 100%;
   border-collapse: collapse;
+  min-width: 500px;
 }
 
 .data-table th {
@@ -459,6 +583,8 @@ body::before {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  display: inline-block;
+  white-space: nowrap;
 }
 
 .status-active {
@@ -476,7 +602,9 @@ body::before {
   color: var(--warning);
 }
 
-/* Buttons */
+/* ============================================
+   BUTTONS
+   ============================================ */
 .btn-outline {
   padding: 10px 20px;
   border-radius: 12px;
@@ -488,6 +616,8 @@ body::before {
   transition: all 0.3s;
   font-family: inherit;
   font-size: 0.875rem;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .btn-outline:hover {
@@ -509,6 +639,8 @@ body::before {
   display: inline-flex;
   align-items: center;
   gap: 8px;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .btn-primary:hover {
@@ -529,21 +661,27 @@ body::before {
   cursor: pointer;
   font-size: 0.875rem;
   font-family: inherit;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .btn-text:hover {
   text-decoration: underline;
 }
 
-/* Table Actions */
+/* ============================================
+   TABLE ACTIONS
+   ============================================ */
 .table-actions {
   display: flex;
   gap: 12px;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .search-bar.small {
   width: 240px;
+  max-width: 100%;
 }
 
 .search-bar.small input {
@@ -551,7 +689,9 @@ body::before {
   font-size: 0.875rem;
 }
 
-/* Action buttons */
+/* ============================================
+   ACTION BUTTONS
+   ============================================ */
 .action-btns {
   display: flex;
   gap: 8px;
@@ -569,6 +709,7 @@ body::before {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
 }
 
 .action-btn:hover {
@@ -576,11 +717,14 @@ body::before {
   color: var(--accent-purple);
 }
 
-/* Plans */
+/* ============================================
+   PLANS
+   ============================================ */
 .plans-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 24px;
+  width: 100%;
 }
 
 .plan-card {
@@ -592,6 +736,9 @@ body::before {
   position: relative;
   transition: all 0.3s;
   animation: fadeIn 0.6s ease backwards;
+  width: 100%;
+  min-width: 0;
+  overflow: hidden;
 }
 
 .plan-card:nth-child(1) { animation-delay: 0.1s; }
@@ -618,6 +765,7 @@ body::before {
   border-radius: 20px;
   font-size: 0.75rem;
   font-weight: 700;
+  white-space: nowrap;
 }
 
 .plan-header {
@@ -627,6 +775,8 @@ body::before {
 .plan-header h3 {
   font-size: 1.25rem;
   margin-bottom: 8px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .plan-price {
@@ -635,6 +785,8 @@ body::before {
   background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .plan-price span {
@@ -656,6 +808,8 @@ body::before {
   align-items: center;
   gap: 10px;
   font-size: 0.875rem;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .plan-features li.disabled {
@@ -665,15 +819,22 @@ body::before {
 
 .plan-features li i.fa-check {
   color: var(--success);
+  flex-shrink: 0;
 }
 
 .plan-features li i.fa-times {
   color: var(--danger);
+  flex-shrink: 0;
 }
 
-/* Calendar */
+/* ============================================
+   CALENDAR
+   ============================================ */
 .calendar-wrapper {
   margin-top: 20px;
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .calendar-header {
@@ -681,6 +842,7 @@ body::before {
   grid-template-columns: repeat(7, 1fr);
   gap: 8px;
   margin-bottom: 8px;
+  min-width: 280px;
 }
 
 .calendar-header div {
@@ -695,6 +857,7 @@ body::before {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   gap: 8px;
+  min-width: 280px;
 }
 
 .calendar-day {
@@ -709,6 +872,7 @@ body::before {
   position: relative;
   cursor: pointer;
   transition: all 0.2s;
+  min-width: 0;
 }
 
 .calendar-day:hover {
@@ -733,19 +897,25 @@ body::before {
   background: var(--success);
 }
 
-/* Attendance stats */
+/* ============================================
+   ATTENDANCE STATS
+   ============================================ */
 .attendance-stats {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 24px;
   margin-bottom: 32px;
+  width: 100%;
 }
 
-/* Settings */
+/* ============================================
+   SETTINGS
+   ============================================ */
 .settings-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 24px;
+  width: 100%;
 }
 
 .settings-card {
@@ -755,6 +925,9 @@ body::before {
   border-radius: 20px;
   padding: 24px;
   animation: fadeIn 0.6s ease backwards;
+  width: 100%;
+  min-width: 0;
+  overflow: hidden;
 }
 
 .settings-card:nth-child(1) { animation-delay: 0.1s; }
@@ -768,6 +941,8 @@ body::before {
   align-items: center;
   gap: 10px;
   color: var(--accent-purple);
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .form-group {
@@ -780,6 +955,8 @@ body::before {
   font-size: 0.875rem;
   font-weight: 500;
   color: var(--text-secondary);
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .form-group input,
@@ -814,6 +991,7 @@ body::before {
   align-items: center;
   padding: 16px 0;
   border-bottom: 1px solid var(--glass-border);
+  gap: 12px;
 }
 
 .toggle-item:last-child {
@@ -822,6 +1000,9 @@ body::before {
 
 .toggle-item span {
   font-size: 0.875rem;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  min-width: 0;
 }
 
 .toggle {
@@ -829,6 +1010,7 @@ body::before {
   width: 48px;
   height: 26px;
   display: inline-block;
+  flex-shrink: 0;
 }
 
 .toggle input {
@@ -869,7 +1051,9 @@ body::before {
   transform: translateX(22px);
 }
 
-/* Notifications */
+/* ============================================
+   NOTIFICATIONS
+   ============================================ */
 .notification-wrapper {
   position: relative;
 }
@@ -888,6 +1072,7 @@ body::before {
   transition: all 0.3s;
   position: relative;
   font-size: 1rem;
+  flex-shrink: 0;
 }
 
 .icon-btn:hover {
@@ -895,7 +1080,7 @@ body::before {
   border-color: var(--accent-purple);
 }
 
-.badge {
+.icon-btn .badge {
   position: absolute;
   top: -4px;
   right: -4px;
@@ -916,6 +1101,7 @@ body::before {
   top: calc(100% + 12px);
   right: 0;
   width: 360px;
+  max-width: calc(100vw - 32px);
   background: var(--secondary-bg);
   backdrop-filter: blur(20px);
   border: 1px solid var(--glass-border);
@@ -941,10 +1127,14 @@ body::before {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 12px;
 }
 
 .dropdown-header h4 {
   font-size: 1rem;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  min-width: 0;
 }
 
 .dropdown-header .badge {
@@ -954,11 +1144,13 @@ body::before {
   padding: 4px 10px;
   border-radius: 20px;
   font-size: 0.75rem;
+  flex-shrink: 0;
 }
 
 .dropdown-body {
   max-height: 320px;
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .notification-item {
@@ -989,10 +1181,17 @@ body::before {
 .notification-item.warning .notif-icon { background: rgba(245, 158, 11, 0.15); color: var(--warning); }
 .notification-item.success .notif-icon { background: rgba(16, 185, 129, 0.15); color: var(--success); }
 
+.notif-content {
+  min-width: 0;
+  overflow: hidden;
+}
+
 .notif-content p {
   font-size: 0.875rem;
   margin-bottom: 4px;
   line-height: 1.4;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .notif-content span {
@@ -1000,7 +1199,9 @@ body::before {
   color: var(--text-secondary);
 }
 
-/* Profile */
+/* ============================================
+   PROFILE MENU
+   ============================================ */
 .profile-menu {
   position: relative;
 }
@@ -1019,6 +1220,8 @@ body::before {
   font-size: 0.875rem;
   font-weight: 500;
   transition: all 0.3s;
+  flex-shrink: 0;
+  min-width: 0;
 }
 
 .profile-btn:hover {
@@ -1030,37 +1233,23 @@ body::before {
   width: 32px;
   height: 32px;
   border-radius: 8px;
+  flex-shrink: 0;
 }
 
-/* Sidebar Footer */
-.sidebar-footer {
-  padding: 20px;
-  border-top: 1px solid var(--glass-border);
+.profile-btn span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
 }
 
-.user-profile {
-  display: flex;
-  align-items: center;
-  gap: 12px;
+.profile-btn i {
+  flex-shrink: 0;
 }
 
-.user-profile img {
-  width: 40px;
-  height: 40px;
-  border-radius: 10px;
-}
-
-.user-name {
-  font-weight: 600;
-  font-size: 0.875rem;
-}
-
-.user-role {
-  font-size: 0.75rem;
-  color: var(--text-secondary);
-}
-
-/* Mobile Toggle */
+/* ============================================
+   MOBILE TOGGLE & OVERLAY
+   ============================================ */
 .mobile-toggle {
   display: none;
   background: none;
@@ -1071,13 +1260,13 @@ body::before {
   padding: 8px;
   margin-right: 4px;
   transition: color 0.3s;
+  flex-shrink: 0;
 }
 
 .mobile-toggle:hover {
   color: var(--accent-purple);
 }
 
-/* Overlay */
 .sidebar-overlay {
   display: none;
   position: fixed;
@@ -1090,7 +1279,9 @@ body::before {
   backdrop-filter: blur(4px);
 }
 
-/* Scrollbar */
+/* ============================================
+   SCROLLBAR
+   ============================================ */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
@@ -1109,7 +1300,9 @@ body::before {
   background: rgba(255, 255, 255, 0.2);
 }
 
-/* Responsive */
+/* ============================================
+   RESPONSIVE: TABLET (max-width: 1024px)
+   ============================================ */
 @media (max-width: 1024px) {
   .mobile-toggle {
     display: block;
@@ -1125,40 +1318,94 @@ body::before {
   }
   .main-content {
     margin-left: 0;
+    width: 100%;
+    max-width: 100vw;
   }
-  .charts-grid, .tables-grid, .plans-grid, .settings-grid {
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .charts-grid {
     grid-template-columns: 1fr;
   }
+  .tables-grid {
+    grid-template-columns: 1fr;
+  }
+  .plans-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .settings-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .attendance-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
   .notification-dropdown {
-    width: 300px;
-    right: -60px;
+    width: 320px;
   }
 }
 
+/* ============================================
+   RESPONSIVE: MOBILE (max-width: 768px)
+   ============================================ */
 @media (max-width: 768px) {
-  .stats-grid, .attendance-stats {
-    grid-template-columns: 1fr;
+  .top-navbar {
+    padding: 0 16px;
+    height: 60px;
   }
   .search-bar {
     display: none;
   }
   .content-area {
-    padding: 20px;
-  }
-  .top-navbar {
-    padding: 0 16px;
+    padding: 16px;
   }
   .page-header h1 {
     font-size: 1.5rem;
   }
+  .page-header p {
+    font-size: 0.875rem;
+  }
+
   .alert-card {
     flex-direction: column;
     text-align: center;
+    padding: 16px;
+    gap: 12px;
+  }
+  .alert-content h3 {
+    font-size: 0.95rem;
+  }
+  .alert-content p {
+    font-size: 0.8rem;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .stat-card {
+    padding: 20px;
+  }
+  .stat-value {
+    font-size: 1.75rem;
+  }
+
+  .chart-card {
+    padding: 16px;
+  }
+  .chart-wrapper {
+    height: 250px;
+  }
+
+  .table-header {
+    padding: 16px;
+    flex-direction: column;
+    align-items: flex-start;
     gap: 12px;
   }
   .table-actions {
-    flex-direction: column;
     width: 100%;
+    flex-direction: column;
+    align-items: stretch;
   }
   .search-bar.small {
     width: 100%;
@@ -1167,7 +1414,191 @@ body::before {
     width: 100%;
     justify-content: center;
   }
-  .data-table th, .data-table td {
+  .data-table th,
+  .data-table td {
     padding: 12px 16px;
   }
+
+  .plans-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .plan-card {
+    padding: 24px;
+  }
+  .plan-price {
+    font-size: 2rem;
+  }
+
+  .attendance-stats {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .settings-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .settings-card {
+    padding: 20px;
+  }
+
+  .notification-dropdown {
+    width: calc(100vw - 32px);
+    right: -50px;
+  }
+  .notification-item {
+    padding: 12px 16px;
+  }
+
+  .profile-btn span {
+    display: none;
+  }
+  .profile-btn i {
+    display: none;
+  }
+  .profile-btn {
+    padding: 4px;
+  }
+
+  .calendar-day {
+    font-size: 0.75rem;
+    border-radius: 8px;
+  }
+  .calendar-header div {
+    font-size: 0.65rem;
+  }
+
+  .nav-right {
+    gap: 8px;
+  }
+}
+
+/* ============================================
+   RESPONSIVE: SMALL MOBILE (max-width: 480px)
+   ============================================ */
+@media (max-width: 480px) {
+  .content-area {
+    padding: 12px;
+  }
+  .page-header h1 {
+    font-size: 1.25rem;
+  }
+  .page-header p {
+    font-size: 0.8rem;
+  }
+  .stat-card {
+    padding: 16px;
+  }
+  .stat-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+  }
+  .stat-value {
+    font-size: 1.5rem;
+  }
+  .stat-label {
+    font-size: 0.8rem;
+  }
+  .chart-wrapper {
+    height: 200px;
+  }
+  .table-header h3 {
+    font-size: 0.9rem;
+  }
+  .btn-outline {
+    padding: 8px 14px;
+    font-size: 0.8rem;
+  }
+  .btn-primary {
+    padding: 8px 14px;
+    font-size: 0.8rem;
+  }
+  .calendar-day {
+    font-size: 0.7rem;
+  }
+  .calendar-header {
+    gap: 4px;
+  }
+  .calendar-grid {
+    gap: 4px;
+  }
+  .plan-card {
+    padding: 20px;
+  }
+  .plan-header h3 {
+    font-size: 1.1rem;
+  }
+  .plan-price {
+    font-size: 1.75rem;
+  }
+  .plan-features li {
+    font-size: 0.8rem;
+    padding: 8px 0;
+  }
+  .settings-card h3 {
+    font-size: 1rem;
+  }
+  .form-group input,
+  .form-group select {
+    padding: 10px 12px;
+    font-size: 0.8rem;
+  }
+  .toggle-item {
+    padding: 12px 0;
+  }
+  .toggle-item span {
+    font-size: 0.8rem;
+  }
+  .notification-dropdown {
+    right: -80px;
+  }
+  .notification-item {
+    padding: 10px 12px;
+    gap: 10px;
+  }
+  .notif-icon {
+    width: 32px;
+    height: 32px;
+    font-size: 0.875rem;
+  }
+  .notif-content p {
+    font-size: 0.8rem;
+  }
+  .notif-content span {
+    font-size: 0.7rem;
+  }
+  .icon-btn {
+    width: 36px;
+    height: 36px;
+  }
+  .icon-btn .badge {
+    width: 16px;
+    height: 16px;
+    font-size: 0.6rem;
+  }
+  .logo-mobile {
+    font-size: 1rem;
+  }
+  .logo-mobile i {
+    font-size: 1.125rem;
+  }
+}
+
+/* ============================================
+   EXTRA FIXES FOR HORIZONTAL OVERFLOW
+   ============================================ */
+img, video, canvas, svg {
+  max-width: 100%;
+  height: auto;
+}
+
+table {
+  max-width: 100%;
+}
+
+pre, code {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
